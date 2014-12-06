@@ -1,6 +1,7 @@
 " Vim color file
 "
 " Author: Tomas Restrepo <tomas@winterdom.com>
+" Source: <https://github.com/flazz/vim-colorschemes>
 "
 " Note: Based on the monokai theme for textmate
 " by Wimer Hazenberg and its darker variant 
