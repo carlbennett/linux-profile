@@ -1,7 +1,5 @@
 # Ignore temporary/private stuff.
 .bash_history
-.config
-.gitconfig
 .lesshst
 .local
 .mysql_history
