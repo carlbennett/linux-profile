@@ -10,6 +10,6 @@ set ruler
 set shiftwidth=2
 set softtabstop=2
 syntax on
-hi LineNr ctermfg=darkgrey
-hi ColorColumn ctermbg=darkred
+hi LineNr ctermfg=244 ctermbg=234
+hi ColorColumn ctermbg=1
 let g:NERDTreeDirArrows=0
