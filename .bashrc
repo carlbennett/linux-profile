@@ -17,6 +17,19 @@ fi
 
 [ "$TERM" ] && alias htop='TERM=screen htop'
 
+if [[ $(uname -r) == *"fc"* ]]; then
+  allow_ip() {
+    sudo firewall-cmd --permanent --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop"
+    sudo systemctl restart firewalld.service
+  }
+  alias allow=allow_ip
+  deny_ip() {
+    sudo firewall-cmd --permanent --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop"
+    sudo systemctl restart firewalld.service
+  }
+  alias deny=deny_ip
+fi
+
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 [ "$PS1" ] && export PS1="\[$(tput sgr0)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
