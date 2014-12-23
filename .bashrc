@@ -19,13 +19,15 @@ fi
 
 if [[ $(uname -r) == *"fc"* ]]; then
   deny_ip_remove() {
-    sudo firewall-cmd --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop"
-    sudo firewall-cmd --permanent --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop"
+    [ "$1" == "" ] && printf "\033[1;31mYou must specify an IP address to unblock.\033[0;0m\n" && return 1
+    sudo firewall-cmd --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop" &&
+    sudo firewall-cmd --permanent --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop" 1>/dev/null
   }
   alias firewall-denyr=deny_ip_remove
   deny_ip_add() {
-    sudo firewall-cmd --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop"
-    sudo firewall-cmd --permanent --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop"
+    [ "$1" == "" ] && printf "\033[1;31mYou must specify an IP address to block.\033[0;0m\n" && return 1
+    sudo firewall-cmd --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop" &&
+    sudo firewall-cmd --permanent --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop" 1>/dev/null
   }
   alias firewall-deny=deny_ip_add
 fi
