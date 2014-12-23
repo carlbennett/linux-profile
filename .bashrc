@@ -17,7 +17,7 @@ fi
 
 [ "$TERM" ] && alias htop='TERM=screen htop'
 
-if [[ $(uname -r) == *"fc"* ]]; then
+if [ -f "/bin/firewall-cmd" ]; then
   deny_ip_remove() {
     [ "$1" == "" ] && printf "\033[1;31mYou must specify an IP address to unblock.\033[0;0m\n" && return 1
     sudo firewall-cmd --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop" &&
