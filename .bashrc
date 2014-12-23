@@ -18,16 +18,16 @@ fi
 [ "$TERM" ] && alias htop='TERM=screen htop'
 
 if [[ $(uname -r) == *"fc"* ]]; then
-  allow_ip() {
+  deny_ip_remove() {
+    sudo firewall-cmd --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop"
     sudo firewall-cmd --permanent --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop"
-    sudo systemctl restart firewalld.service
   }
-  alias allow=allow_ip
-  deny_ip() {
+  alias firewall-denyr=deny_ip_remove
+  deny_ip_add() {
+    sudo firewall-cmd --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop"
     sudo firewall-cmd --permanent --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop"
-    sudo systemctl restart firewalld.service
   }
-  alias deny=deny_ip
+  alias firewall-deny=deny_ip_add
 fi
 
 export EDITOR=/usr/bin/vim
