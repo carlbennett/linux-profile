@@ -20,14 +20,25 @@ fi
 if [ -f "/bin/firewall-cmd" ]; then
   deny_ip_remove() {
     [ "$1" == "" ] && printf "\033[1;31mYou must specify an IP address to unblock.\033[0;0m\n" && return 1
-    sudo firewall-cmd --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop" &&
-    sudo firewall-cmd --permanent --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop" 1>/dev/null
+    /usr/bin/sudo /bin/firewall-cmd --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop" &&
+    /usr/bin/sudo /bin/firewall-cmd --permanent --zone="public" --remove-rich-rule="rule family='ipv4' source address='$1' drop" 1>/dev/null
   }
   alias firewall-denyr=deny_ip_remove
   deny_ip_add() {
     [ "$1" == "" ] && printf "\033[1;31mYou must specify an IP address to block.\033[0;0m\n" && return 1
-    sudo firewall-cmd --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop" &&
-    sudo firewall-cmd --permanent --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop" 1>/dev/null
+    /usr/bin/sudo /bin/firewall-cmd --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop" &&
+    /usr/bin/sudo /bin/firewall-cmd --permanent --zone="public" --add-rich-rule="rule family='ipv4' source address='$1' drop" 1>/dev/null
+  }
+  alias firewall-deny=deny_ip_add
+elif [ -f "/usr/sbin/csf" ]; then
+  deny_ip_remove() {
+    [ "$1" == "" ] && printf "\033[1;31mYou must specify an IP address to unblock.\033[0;0m\n" && return 1
+    /usr/bin/sudo /usr/sbin/csf -dr $1
+  }
+  alias firewall-denyr=deny_ip_remove
+  deny_ip_add() {
+    [ "$1" == "" ] && printf "\033[1;31mYou must specify an IP address to block.\033[0;0m\n" && return 1
+    /usr/bin/sudo /usr/sbin/csf -d $1
   }
   alias firewall-deny=deny_ip_add
 fi
