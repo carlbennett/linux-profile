@@ -16,6 +16,8 @@ if [ "$LOG_PATH" = "" ]; then
 
 else
 
+  trap 'printf "\n\e[1;31mKeyboard interrupt.\e[0;0m\n"; stty echo; exit 2' 2; stty -echo
   sudo tail -n 500 -F $LOG_PATH | perl -n -e'/^(\S+) (\S+) (\S+) (\S+) \[([^:]+):(\d+:\d+:\d+) ([^\]]+)\] \"(\S+) (.*?) (\S+)\" (\S+) (\S+) "([^"]*)" "([^"]*)"$/ && print "\033[40;1;35m[$5 $6]\033[0;32m $1 \033[37m$11 $8 \033[31m$9 \033[36m$2\033[0m\n"'
+  stty echo
 
 fi
