@@ -11,7 +11,7 @@ if [ "$ORIGIN_BRANCH" == "" ] || [ "$TARGET_ID" == "" ] || [ "$TARGET_BRANCH" ==
   exit 1
 fi
 
-trap 'printf "\n\e[1;31mKeyboard interrupt.\e[0;0m\n"; stty echo; exit 1' 2
+trap 'printf "\n\e[1;31mKeyboard interrupt.\e[0;0m\n"; stty echo; exit 2' 2
 stty -echo
 
 printf "\e[1;33mPulling latest changes and merging remote branch...\e[0;0m\n"
@@ -27,7 +27,7 @@ else
 fi
 git status
 if [ "$CODE" -ne 0 ]; then
-  trap 'printf "\n\e[1;32mLatest origin branch changes have been pulled, \e[1;31mbut the target branch was not merged.\e[0;0m\n"; stty echo; exit 1' 2
+  trap 'printf "\n\e[1;32mLatest origin branch changes have been pulled, \e[1;31mbut the target branch was not merged.\e[0;0m\n"; stty echo; exit 2' 2
 else
   trap 'printf "\n\e[1;32mLatest changes have been pulled and merged.\e[0;0m\n"; stty echo; exit 0' 2
 fi
