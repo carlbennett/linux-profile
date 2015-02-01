@@ -17,6 +17,8 @@ fi
 
 [ "$TERM" ] && alias htop='TERM=screen htop'
 
+[ -f "$HOME/.local/bin/nginx-logs.sh" ] && alias nginx-logs='sudo $HOME/.local/bin/nginx-logs.sh'
+
 if [ -f "/bin/firewall-cmd" ] || [ -f "/usr/sbin/csf" ]; then
   deny_ip_add() {
     [ "$1" == "" ] && printf "\033[1;31mYou must specify an IP address to block.\033[0;0m\n" && return 1
