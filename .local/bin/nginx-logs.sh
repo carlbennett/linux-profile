@@ -5,14 +5,14 @@ LOG_PATH="$1"
 
 if [ "$LOG_PATH" = "" ] && [ -f "$LOG_DEFAULT_PATH" ]; then
 
-  echo -e "\033[35mAuto-detected Log File: \033[32m$LOG_DEFAULT_PATH\033[0m"
+  printf "\033[35mAuto-detected Log File: \033[32m$LOG_DEFAULT_PATH\033[0m\n"
   LOG_PATH="$LOG_DEFAULT_PATH"
 
 fi
 
 if [ "$LOG_PATH" = "" ]; then
 
-  echo -e "\033[32mUsage: $0 /path/to/nginx/access_log\033[0m"
+  printf "\033[32mUsage: $0 /path/to/nginx/access_log\033[0m\n"
 
 else
 
