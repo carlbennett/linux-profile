@@ -1,12 +1,11 @@
-#!/bin/sh
-if [ "$1" == "" ]; then
-  printf "Usage: $0 <hostname>\n\nOpens a SOCKS 4/5 proxy locally on port tcp/1080 through SSH using the server located at <hostname>.\n\n"
-  exit 0
-fi
-ssh -f -N -D 1080 $1 &>/dev/null
+#!/bin/bash
+HOSTNAME="$1"
+PORT="$2"
+[ "$HOSTNAME" == "" ] && printf "Usage: $0 <hostname> [port]\n\nHostname is required.\n" && exit 1
+[ "$PORT"     == "" ] && PORT="1080"
+RESULT=`ps aux | grep ".*ssh.*${PORT}.*${HOSTNAME}.*" | grep -v grep`
+[ "$RESULT" ] && kill `printf "$RESULT" | awk {'print $2'}` && printf "Killed old tunnel.\n"
+ssh -f -N -D "$PORT" "$HOSTNAME" &>/dev/null
 CODE=$?
-if [ $CODE -eq 0 ]; then
-  printf "Tunnel opened.\n"
-else
-  printf "Failed to open tunnel.\n"
-fi
+[ "$CODE" -eq 0 ] && printf "Tunnel opened.\n" && exit "$CODE"
+[ "$CODE" -ne 0 ] && printf "Failed to open tunnel.\n" && exit "$CODE"
