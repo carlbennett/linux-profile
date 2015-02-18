@@ -13,7 +13,7 @@ if [ $UID -eq 0 ]; then
   alias mv='mv -i'
 fi
 
-[ "$TERM" ] && alias htop='TERM=screen htop'
+[ -n "$TERM" ] && alias htop='TERM=screen htop'
 
 [ -f "$HOME/.local/bin/nginx-logs.sh" ] && alias nginx-logs='sudo $HOME/.local/bin/nginx-logs.sh'
 
@@ -40,7 +40,8 @@ fi
 
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
-[ "$PS1" ] && \
+
+[ -n "$PS1" ] && \
   export PS1="\[$(tput sgr0)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
 # Shell history settings
