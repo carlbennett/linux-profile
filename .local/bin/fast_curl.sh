@@ -22,7 +22,7 @@ DATA_STREAM="GET ${PATH} HTTP/1.1\nAccept: */*\nConnection: close\nHost: ${HOST}
 i=0
 while true; do
   i=$((i+1))
-  printf "== %-4s =======================================================================\n" "$i"
+  printf "== %-6s =====================================================================\n" "$i"
   printf "${DATA_STREAM}"
   printf "${DATA_STREAM}" | /usr/bin/nc${SSL} --crlf --send-only -w 100ms ${ADDRESS} ${PORT}
 done
