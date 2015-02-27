@@ -1,5 +1,7 @@
 #!/bin/bash
 
+USAGE_STRING="Usage: $0 <host> <path> [real-host] [port] [user-agent]\n"
+
 HOST="$1"
 PATH="$2"
 ADDRESS="$3"
@@ -7,8 +9,8 @@ PORT="$4"
 USER_AGENT="$5"
 SSL=""
 
-[ "$HOST"       == ""    ] && printf "Usage: $0 <host> <path> [real-host]\n" && exit 1
-[ "$PATH"       == ""    ] && printf "Usage: $0 <host> <path> [real-host]\n" && exit 1
+[ "$HOST"       == ""    ] && printf "$USAGE_STRING" && exit 1
+[ "$PATH"       == ""    ] && printf "$USAGE_STRING" && exit 1
 [ "$ADDRESS"    == ""    ] && ADDRESS="$HOST"
 [ "$PORT"       == ""    ] && PORT="80"
 [ "$USER_AGENT" == ""    ] && USER_AGENT="curl/7.37.0"
