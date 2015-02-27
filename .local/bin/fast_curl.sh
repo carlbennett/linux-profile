@@ -14,7 +14,7 @@ SSL=""
 [ "$USER_AGENT" == ""    ] && USER_AGENT="curl/7.37.0"
 [ "$PORT"       == "443" ] && SSL=" --ssl"
 
-DATA_STREAM="GET ${PATH} HTTP/1.1\nAccept: */*\nConnection: close\nHost: ${HOST}\nUser-Agent: User-Agent: ${USER_AGENT}\n\n"
+DATA_STREAM="GET ${PATH} HTTP/1.1\nAccept: */*\nConnection: close\nHost: ${HOST}\nUser-Agent: ${USER_AGENT}\n\n"
 
 
 i=0
