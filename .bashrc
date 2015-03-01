@@ -7,11 +7,9 @@
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-if [ $UID -eq 0 ]; then
-  alias rm='rm -i'
-  alias cp='cp -i'
-  alias mv='mv -i'
-fi
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
 
 [ -n "$TERM" ] && alias htop='TERM=screen htop'
 
