@@ -1,9 +1,10 @@
 # Ignore temporary/private stuff.
-.bash_history
-.lesshst
-.local
-.mysql_history
-.pki
-.ssh/*
-.viminfo
-*
+/.bash_history
+/.lesshst
+/.local/
+/.mysql_history
+/.pki/
+/.rnd
+/.ssh/
+/.viminfo
+/*
