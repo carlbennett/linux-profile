@@ -18,11 +18,16 @@ SSL=""
 
 DATA_STREAM="GET ${PATH} HTTP/1.1\nAccept: */*\nConnection: close\nHost: ${HOST}\nUser-Agent: ${USER_AGENT}\n\n"
 
+NETCAT="/usr/bin/nc"
+[ ! -x "$NETCAT" ] && NETCAT="/bin/nc"
+[ ! -x "$NETCAT" ] && \
+  printf "Error: Cannot execute /usr/bin/nc or /bin/nc.\n" \
+  exit 0
 
 i=0
 while true; do
   i=$((i+1))
   printf "== %-6s =====================================================================\n" "$i"
   printf "${DATA_STREAM}"
-  printf "${DATA_STREAM}" | /usr/bin/nc${SSL} --crlf --send-only -w 100ms ${ADDRESS} ${PORT}
+  printf "${DATA_STREAM}" | ${NETCAT}${SSL} --crlf --send-only -w 100ms ${ADDRESS} ${PORT}
 done
