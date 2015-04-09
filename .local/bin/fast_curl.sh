@@ -8,12 +8,14 @@ ADDRESS="$3"
 PORT="$4"
 USER_AGENT="$5"
 SSL=""
+CURL_USER_AGENT=$(/bin/curl --version | /bin/awk '{print $1 "/" $2}' | /bin/sed -n 1p)
 
 [ "$HOST"       == ""    ] && printf "$USAGE_STRING" && exit 1
 [ "$PATH"       == ""    ] && printf "$USAGE_STRING" && exit 1
 [ "$ADDRESS"    == ""    ] && ADDRESS="$HOST"
 [ "$PORT"       == ""    ] && PORT="80"
-[ "$USER_AGENT" == ""    ] && USER_AGENT="curl/7.37.0"
+[ "$USER_AGENT" == ""    ] && USER_AGENT="$CURL_USER_AGENT"
+[ "$USER_AGENT" == ""    ] && USER_AGENT="fast_curl"
 [ "$PORT"       == "443" ] && SSL=" --ssl"
 
 DATA_STREAM="GET ${PATH} HTTP/1.1\nAccept: */*\nConnection: close\nHost: ${HOST}\nUser-Agent: ${USER_AGENT}\n\n"
