@@ -2,7 +2,7 @@ colorscheme molokai
 filetype indent plugin on
 set autoindent
 if version >= 703
-  set colorcolumn=79
+  set colorcolumn=80
 endif
 set confirm
 set expandtab
