@@ -19,6 +19,8 @@
   fileMode = true
 [credential]
   helper = store
+[push]
+  default = simple
 [user]
   name = Carl Bennett
   email = carlbennett@users.noreply.github.com
