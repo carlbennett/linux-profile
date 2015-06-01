@@ -19,6 +19,8 @@
   fileMode = true
 [credential]
   helper = store
+[fetch]
+  prune = true
 [push]
   default = simple
 [user]
