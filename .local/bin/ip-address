@@ -3,5 +3,9 @@
 STR_IPV4="$(ip addr show scope global primary | grep inet\  | cut -d\  -f6 | cut -d/ -f1)"
 STR_IPV6="$(ip addr show scope global primary | grep inet6\  | cut -d\  -f6 | cut -d/ -f1)"
 
-[ "${STR_IPV4}" != "" ] && printf "Primary IPv4 address: %s\n" "${STR_IPV4}"
-[ "${STR_IPV6}" != "" ] && printf "Primary IPv6 address: %s\n" "${STR_IPV6}"
+[ "${STR_IPV4}" != "" ] && \
+  printf "Primary IPv4 address: %s\n" "${STR_IPV4}" || \
+  printf "No primary IPv4 address found.\n" 1>&2
+[ "${STR_IPV6}" != "" ] && \
+  printf "Primary IPv6 address: %s\n" "${STR_IPV6}" || \
+  printf "No primary IPv6 address found.\n" 1>&2
