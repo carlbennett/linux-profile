@@ -1,3 +1,3 @@
 # .bash_profile
-export PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.local/sbin:$HOME/sbin:$PATH
 [ -f ~/.bashrc ] && . ~/.bashrc
