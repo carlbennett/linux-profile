@@ -1,7 +1,15 @@
 #!/bin/sh
 
-STR_IPV4="$(ip -4 addr show scope global primary | sed -n 2p | cut -d\  -f6 | cut -d/ -f1)"
-STR_IPV6="$(ip -6 addr show scope global primary | sed -n 2p | cut -d\  -f6 | cut -d/ -f1)"
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+
+PATH_IP=$(which ip)
+if [ $? -ne 0 ]; then
+  echo "Error: cannot find utility named 'ip' in PATH.\n" 1>&2
+  exit 1
+fi
+
+STR_IPV4="$(${PATH_IP} -4 addr show scope global primary | sed -n 2p | cut -d\  -f6 | cut -d/ -f1)"
+STR_IPV6="$(${PATH_IP} -6 addr show scope global primary | sed -n 2p | cut -d\  -f6 | cut -d/ -f1)"
 
 [ "${STR_IPV4}" != "" ] && \
   printf "Primary IPv4 address: %s\n" "${STR_IPV4}" || \
