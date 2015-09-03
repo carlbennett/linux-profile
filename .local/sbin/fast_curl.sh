@@ -19,7 +19,7 @@ CURL_USER_AGENT=$(/usr/bin/curl --version | /usr/bin/awk '{print $1 "/" $2}' | /
 [ "$USER_AGENT" == ""    ] && USER_AGENT="$CURL_USER_AGENT"
 [ "$USER_AGENT" == ""    ] && USER_AGENT="fast_curl"
 
-[ $DEBIAN -eq 0 ] && [ "$PORT" != "443" ] && SSL=""
+SSL=""
 [ $DEBIAN -eq 0 ] && [ "$PORT" == "443" ] && SSL=" --ssl"
 
 DATA_STREAM="GET ${PATH} HTTP/1.1\nAccept: */*\nConnection: close\nHost: ${HOST}\nUser-Agent: ${USER_AGENT}\n\n"
