@@ -10,7 +10,7 @@ PATH="$2"
 ADDRESS="$3"
 PORT="$4"
 USER_AGENT="$5"
-CURL_USER_AGENT=$(/usr/bin/curl --version | /usr/bin/awk '{print $1 "/" $2}' | /bin/sed -n 1p)
+CURL_USER_AGENT=$(/usr/bin/curl --version | /usr/bin/awk '{print $1 "/" $2}' | /usr/bin/sed -n 1p)
 
 [ "$HOST"       == ""    ] && printf "$USAGE_STRING" && exit 1
 [ "$PATH"       == ""    ] && printf "$USAGE_STRING" && exit 1
