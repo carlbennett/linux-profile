@@ -3,6 +3,10 @@
 # Source global definitions
 [ -f /etc/bashrc ] && . /etc/bashrc
 
+# Load bash completions
+[ -f /usr/share/bash-completion/completions/git ] && \
+  . /usr/share/bash-completion/completions/git
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
