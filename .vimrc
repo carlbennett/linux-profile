@@ -11,6 +11,7 @@ set number
 set ruler
 set shiftwidth=2
 set softtabstop=2
+set hlsearch
 syntax on
 hi LineNr ctermfg=244 ctermbg=234
 hi ColorColumn ctermbg=1
