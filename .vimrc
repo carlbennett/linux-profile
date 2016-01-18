@@ -16,3 +16,4 @@ syntax on
 hi LineNr ctermfg=244 ctermbg=234
 hi ColorColumn ctermbg=1
 let g:NERDTreeDirArrows=0
+set shortmess+=I
