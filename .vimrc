@@ -6,7 +6,7 @@ if version >= 703
 endif
 set confirm
 set expandtab
-set mouse+=a
+set mouse=a
 set number
 set ruler
 set shiftwidth=2
@@ -18,3 +18,8 @@ hi ColorColumn ctermbg=1
 let g:NERDTreeDirArrows=0
 set shortmess+=I
 set synmaxcol=0
+set wildmenu
+set ttyfast
+set cursorline
+set laststatus=2
+set incsearch
