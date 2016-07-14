@@ -26,4 +26,5 @@
   default = current
 [user]
   name = Carl Bennett
-  email = carlbennett@users.noreply.github.com
+  email = carl@carlbennett.me
+  signingkey = A8F24410
