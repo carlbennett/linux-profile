@@ -20,6 +20,9 @@
   fileMode = true
 [credential]
   helper = store
+[diff "ansible-vault"]
+  textconv = ansible-vault view
+  cachetextconv = true
 [fetch]
   prune = true
 [push]
