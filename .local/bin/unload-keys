@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Check if keys in memory:
+ssh-add -l >/dev/null 2>&1
+UNLOAD_KEYS_DETECT=$?
+
+# Exit if no keys in memory:
+if [ $UNLOAD_KEYS_DETECT -ne 0 ]; then
+  echo 'No keys present in memory.' 1>&2
+  exit 0
+fi
+
 # Delete all keys in memory:
 ssh-add -D
 UNLOAD_KEYS_SUCCESS=$?
