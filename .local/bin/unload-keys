@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Delete all keys in memory:
+ssh-add -D
+UNLOAD_KEYS_SUCCESS=$?
+
+# Notify user:
+if [ $(which notify-send 2>/dev/null) ]; then
+  if [ $UNLOAD_KEYS_SUCCESS -ne 0 ]; then
+    notify-send \
+      -u critical \
+      -i "/usr/share/icons/Adwaita/scalable/status/dialog-error-symbolic.svg" \
+      "SSH Keys Failed To Unload" \
+      "An error occurred removing SSH keys from memory for security purposes. Please review as soon as possible."
+  else
+    notify-send \
+      -u critical \
+      -i "/usr/share/icons/Adwaita/scalable/status/dialog-password-symbolic.svg" \
+      "SSH Keys Unloaded" \
+      "Your SSH keys have been unloaded for security purposes. You can reload them again at any time using: <b>ssh-add ~/.ssh/*pem</b>"
+  fi
+fi
