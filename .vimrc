@@ -25,3 +25,4 @@ set laststatus=2
 set incsearch
 hi ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$\| \+\ze\t/
+set scrolloff=5
