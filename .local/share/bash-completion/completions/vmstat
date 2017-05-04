@@ -6,10 +6,10 @@ _vmstat()
     _init_completion || return
 
     case $prev in
-        -V|-c|-M|-N|-n|-w|-p)
+        -h|--help|-V|--version|-c|-M|-N|-n|-w|-p|--partition)
             return
             ;;
-        -S)
+        -S|--unit)
             [[ $OSTYPE == *linux* ]] && \
                 COMPREPLY=( $( compgen -W 'k K m M' -- "$cur" ) )
             return
@@ -24,4 +24,4 @@ _vmstat()
 } &&
 complete -F _vmstat vmstat
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh
