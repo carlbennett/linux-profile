@@ -6,6 +6,7 @@ if version >= 703
 endif
 set confirm
 set expandtab
+set ttymouse=xterm2
 set mouse=a
 set number
 set ruler
