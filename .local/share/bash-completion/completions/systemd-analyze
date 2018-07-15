@@ -1,4 +1,5 @@
 # systemd-analyze(1) completion                      -*- shell-script -*-
+# SPDX-License-Identifier: LGPL-2.1+
 #
 # This file is part of systemd.
 #
@@ -35,16 +36,20 @@ _systemd_analyze() {
         local cur=${COMP_WORDS[COMP_CWORD]} prev=${COMP_WORDS[COMP_CWORD-1]}
 
         local -A OPTS=(
-               [STANDALONE]='--help --version --system --user --order --require --no-pager --man'
-                      [ARG]='-H --host -M --machine --fuzz --from-pattern --to-pattern '
+               [STANDALONE]='-h --help --version --system --user --global --order --require --no-pager
+                             --man=no --generators=yes'
+                      [ARG]='-H --host -M --machine --fuzz --from-pattern --to-pattern'
         )
 
         local -A VERBS=(
-                [STANDALONE]='time blame plot dump'
+                [STANDALONE]='time blame plot dump unit-paths calendar'
                 [CRITICAL_CHAIN]='critical-chain'
                 [DOT]='dot'
-                [LOG_LEVEL]='set-log-level'
+                [LOG_LEVEL]='log-level'
+                [LOG_TARGET]='log-target'
                 [VERIFY]='verify'
+                [SECCOMP_FILTER]='syscall-filter'
+                [SERVICE_WATCHDOGS]='service-watchdogs'
         )
 
         _init_completion || return
@@ -80,7 +85,7 @@ _systemd_analyze() {
 
         elif __contains_word "$verb" ${VERBS[STANDALONE]}; then
                 if [[ $cur = -* ]]; then
-                        comps='--help --version --system --user'
+                        comps='--help --version --system --user --global'
                 fi
 
         elif __contains_word "$verb" ${VERBS[CRITICAL_CHAIN]}; then
@@ -90,7 +95,7 @@ _systemd_analyze() {
 
         elif __contains_word "$verb" ${VERBS[DOT]}; then
                 if [[ $cur = -* ]]; then
-                        comps='--help --version --system --user --from-pattern --to-pattern --order --require'
+                        comps='--help --version --system --user --global --from-pattern --to-pattern --order --require'
                 fi
 
         elif __contains_word "$verb" ${VERBS[LOG_LEVEL]}; then
@@ -100,12 +105,31 @@ _systemd_analyze() {
                         comps='debug info notice warning err crit alert emerg'
                 fi
 
+        elif __contains_word "$verb" ${VERBS[LOG_TARGET]}; then
+                if [[ $cur = -* ]]; then
+                        comps='--help --version --system --user'
+                else
+                        comps='console journal kmsg journal-or-kmsg null'
+                fi
+
+        elif __contains_word "$verb" ${VERBS[SECCOMP_FILTER]}; then
+                if [[ $cur = -* ]]; then
+                        comps='--help --version'
+                fi
+
         elif __contains_word "$verb" ${VERBS[VERIFY]}; then
                 if [[ $cur = -* ]]; then
-                        comps='--help --version --system --user --man'
+                        comps='--help --version --system --user --global --man=no --generators=yes'
                 else
                         comps=$( compgen -A file -- "$cur" )
                         compopt -o filenames
+                fi
+
+        elif __contains_word "$verb" ${VERBS[SERVICE_WATCHDOGS]}; then
+                if [[ $cur = -* ]]; then
+                        comps='--help --version --system --user'
+                else
+                        comps='on off'
                 fi
 
         fi
