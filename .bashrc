@@ -49,8 +49,8 @@ export VISUAL=/usr/bin/vim
 
 # Shell history settings
 export HISTCONTROL=ignoredups:erasedups # no duplicate entries
-export HISTSIZE=10000                   # big history
-export HISTFILESIZE=10000               # big history
+export HISTSIZE=50000                   # big history
+export HISTFILESIZE=50000               # big history
 shopt -s histappend                     # append to history, don't overwrite it
 
 # Save and reload the history after each command finishes
