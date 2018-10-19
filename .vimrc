@@ -27,3 +27,4 @@ set incsearch
 hi ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$\| \+\ze\t/
 set scrolloff=5
+autocmd FileType markdown,tex,text,textile setlocal spell
