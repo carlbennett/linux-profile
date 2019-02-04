@@ -8,6 +8,7 @@
   cp  = cherry-pick
   d   = "!f() { git diff --color "$1"^.."$1"; }; f"
   dlc = diff --cached HEAD^
+  fucked = reset --hard HEAD
   i   = init
   gr  = log --graph --color --pretty=format:"%C(yellow)%h\\ %Cgreen%cr\\%Cred%d\\ %Creset%s%Cblue\\ [%cn]"
   le  = log --oneline --decorate
