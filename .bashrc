@@ -16,7 +16,7 @@ alias mv='mv -i'
 
 [ -n "$TERM" ] && alias htop='TERM=screen htop'
 
-[ -f "$HOME/.local/bin/nginx-logs.sh" ] && alias nginx-logs='sudo $HOME/.local/bin/nginx-logs.sh'
+[ -f "$HOME/.local/bin/nginx-logs.sh" ] && alias nginx-logs="sudo $HOME/.local/bin/nginx-logs.sh"
 
 if [ -f "/bin/firewall-cmd" ] || [ -f "/usr/sbin/csf" ]; then
   deny_ip_add() {
