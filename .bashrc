@@ -61,3 +61,11 @@ export PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
 
 # Load Vultr rc file if it exists
 [ -f $HOME/.vultrrc ] && . $HOME/.vultrrc
+
+# Load PHP if it exists
+[ ! -x php ] && [ -f /opt/remi/php74/enable ] && source /opt/remi/php74/enable
+[ ! -x php ] && [ -f /opt/remi/php73/enable ] && source /opt/remi/php73/enable
+[ ! -x php ] && [ -f /opt/remi/php72/enable ] && source /opt/remi/php72/enable
+[ ! -x php ] && [ -f /opt/remi/php71/enable ] && source /opt/remi/php71/enable
+[ ! -x php ] && [ -f /opt/remi/php70/enable ] && source /opt/remi/php70/enable
+[ ! -x php ] && [ -f /opt/remi/php56/enable ] && source /opt/remi/php56/enable
