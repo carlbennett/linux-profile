@@ -59,6 +59,9 @@ shopt -s histappend                     # append to history, don't overwrite it
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
 
+# Set GPG TTY to current TTY if it's not already set
+[ -z "$GPG_TTY" ] && export GPG_TTY=$(tty)
+
 # Load Vultr rc file if it exists
 [ -f $HOME/.vultrrc ] && . $HOME/.vultrrc
 
