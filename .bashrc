@@ -1,7 +1,7 @@
 # .bashrc
 
 # Source global definitions
-[ -f /etc/bashrc ] && . /etc/bashrc
+[ -f /etc/bashrc ] && source /etc/bashrc
 
 # Load bash completions
 . $HOME/.local/share/bash-completion/bash_completion
@@ -9,10 +9,7 @@
 # Load Ruby Version Manager (RVM)
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
-# User specific aliases and functions
+# Command aliases
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
