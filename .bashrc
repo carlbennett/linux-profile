@@ -10,9 +10,12 @@
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Command aliases
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
+alias ..='cd ..' # Lazier
+alias cd..='cd ..' # Lazy
+alias cp='cp -i' # Interactive cp
+alias mv='mv -i' # Interactive mv
+alias rm='rm -i' # Interactive rm
+alias ~='cd ~' # Change directory to home faster
 
 [ -n "$TERM" ] && alias htop='TERM=screen htop'
 
