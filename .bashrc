@@ -12,10 +12,6 @@
 # Command aliases
 source $HOME/.bash_aliases
 
-[ -n "$TERM" ] && alias htop='TERM=screen htop'
-
-[ -f "$HOME/.local/bin/nginx-logs.sh" ] && alias nginx-logs="sudo $HOME/.local/bin/nginx-logs.sh"
-
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
