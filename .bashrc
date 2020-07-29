@@ -16,7 +16,7 @@ export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
 [ -n "$PS1" ] && \
-  export PS1="\[\e[m\]\[\e[38;5;196m\]\A\[\e[m\] \[\e[38;5;245m\]\u\[\e[37m\]@\[\e[38;5;222m\]\H\[\e[37m\]:\[\e[38;5;33m\]\w\[\e[37m\]\\$\[\e[m\] "
+  export PS1="\[\e[m\]\[\e[38;5;196m\]\A\[\e[m\] \[\e[38;5;151m\]\u\[\e[37m\]@\[\e[38;5;180m\]\H\[\e[37m\]:\[\e[38;5;39m\]\w\[\e[37m\]\\$\[\e[m\] "
 
 [ -x /usr/bin/dircolors ] && [ -s ~/.dir_colors ] && eval "$(/usr/bin/dircolors ~/.dir_colors)"
 
