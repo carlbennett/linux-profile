@@ -28,6 +28,8 @@
   prune = true
 [gpg]
   program = gpg2
+[pull]
+  rebase = true
 [push]
   default = current
 [user]
