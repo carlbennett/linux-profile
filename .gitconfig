@@ -28,6 +28,8 @@
   prune = true
 [gpg]
   program = gpg2
+[init]
+  defaultBranch = master
 [pull]
   rebase = true
 [push]
