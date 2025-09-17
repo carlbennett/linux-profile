@@ -3,9 +3,6 @@
 # Source global definitions
 [ -f /etc/bashrc ] && source /etc/bashrc
 
-# Load bash completions
-. $HOME/.local/share/bash-completion/bash_completion
-
 # Load Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
